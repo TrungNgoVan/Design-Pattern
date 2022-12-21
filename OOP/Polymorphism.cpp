@@ -4,7 +4,7 @@ using namespace std;
 
 class Shape
 {
-private:
+protected:
     // Attribute
     int _height, _width;
 
@@ -15,7 +15,7 @@ public:
         _width = width;
     }
 
-    virtual int area() = 0;
+    virtual double area() = 0;
 };
 
 class Rectangle : public Shape
@@ -24,9 +24,9 @@ public:
     // Constructor
     Rectangle(int a = 0, int b = 0) : Shape(a, b) {}
 
-    int area()
+    double area()
     {
-        return (_height * _width);
+        return (_height * _width * 1.0);
     }
 };
 
@@ -35,9 +35,9 @@ class Triangle : public Shape
 public:
     Triangle(int a = 0, int b = 0) : Shape(a, b) {}
 
-    int area()
+    double area()
     {
-        return (width * height / 2);
+        return (_width * _height / (2 * 1.0));
     }
 };
 
@@ -45,6 +45,7 @@ public:
 
 int main()
 {
-
+    Triangle a(1,5);
+    cout << a.area();
     return 0;
 }
