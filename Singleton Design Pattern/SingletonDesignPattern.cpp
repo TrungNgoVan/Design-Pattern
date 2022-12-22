@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// class singleton with method constructor private
 class TrungSingleton{
 private:
     int _index;
@@ -19,7 +20,7 @@ private:
         _index = value;
     }
     
-public:
+public: // get instance static
     static TrungSingleton* getInstance() {
         if (_uniqueInstance == NULL) {
             srand(time(NULL));
@@ -28,7 +29,7 @@ public:
         }
         return _uniqueInstance; 
     }
-
+public: // Order method
     void sayHello(){
         cout << "Hello, i am Trung number " << _index << endl;
     }
@@ -42,27 +43,14 @@ public:
     }
 };
 
+// create variable Singleton = NULL
 TrungSingleton *TrungSingleton::_uniqueInstance = NULL;
 
-void run(){
-    TrungSingleton::getInstance()->sayHello();
-    // cout << "Hello" << endl;
-}
-
+// test code
 int main(){
-    
-    // TrungSingleton::getInstance()->sayHello();
-    thread thread1(run);
-    thread thread2(run);
-    thread1.join(); // wait finish thread 1
-    thread2.join(); // wait thread 1 finish 
-
-    // vector<thread> threads;
-    // threads.push_back(thread1);
-    // threads.push_back(thread2); 
-    // for (int i = 0; i < threads.size(); i++) {
-    //     threads[i].join();
-    // }
-    
+    TrungSingleton *singleton = TrungSingleton::getInstance();
+    singleton->sayHello();
+    TrungSingleton *singleton1 = TrungSingleton::getInstance();
+    singleton1->sayHello();
     return 0;
 };
