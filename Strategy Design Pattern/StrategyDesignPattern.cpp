@@ -1,3 +1,13 @@
+/**
+ * @file StrategyDesignPattern.cpp
+ * @author Ngo Van Trung (trung2601.it@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-12-22
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream>
 #include <string>
 using namespace std;
@@ -74,6 +84,8 @@ int main(){
     ticket.setName("MayBay");
     ticket.setPrice(100);
     ticket.setPromoteStrategy(new QuarterDiscountStrategy());
-    cout << ticket.getName() << " " << ticket.getPrice() << "->" << ticket.getPromotePrice();
+    cout << ticket.getName() << " " << ticket.getPrice() << "->" << ticket.getPromotePrice() << "\n";
+    ticket.setPromoteStrategy(new NoDiscountStrategy());
+    cout << ticket.getName() << " " << ticket.getPrice() << "->" << ticket.getPromotePrice() << "\n";
     return 0;
 }
